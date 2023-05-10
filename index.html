@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Weather App</title>
+    <script src="./app.js" type="module"></script>
     <style>
       /* Define CSS styles for the weather app */
       body {
@@ -36,11 +37,17 @@
         font-size: 24px;
         margin-bottom: 20px;
       }
+      p {
+        display: inline-block;
+      }
     </style>
   </head>
   <body>
     <div class="weather-container">
       <h1>Current Weather</h1>
+      <p>City name:</p>
+      <input type="text">
+      <button>Get forecast</button>
       <div class="weather-info">
         <img src="https://www.weatherbit.io/static/img/icons/r01d.png" alt="Rain icon" class="icon">
         <span class="temperature">18°C</span>
