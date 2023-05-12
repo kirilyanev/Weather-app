@@ -1,5 +1,9 @@
 import { getData } from "./api.js";
 
+const weatherIcon = document.querySelector('.weather-info img');
+const tempIcon = document.querySelector('.temperature');
+const descriptionElement = document.querySelector('.description');
+
 const selectElement = document.querySelector('select');
 const nextButton = document.querySelector('button');
 nextButton.addEventListener('click', getCountryes);
@@ -35,15 +39,30 @@ async function getCountryes() {
         }
     });
 
-    renderForecastData(data[0]);
+    const weatherData = await getForecastData(data[0]);
+    renderWeatherData(weatherData)
 }
 
-async function renderForecastData(data) {
+async function getForecastData(data) {
     
     const lat = data.lat;
     const lon = data.lon;
 
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4ac8da0dc9053f374e5e587c102978a9`);
     const forecastData = await response.json();
-    console.log(forecastData);
+    
+    return forecastData;
+}
+
+async function renderWeatherData(weatherData) {
+    const iconCode = weatherData.weather[0].icon;
+    // Celsius = Kelvin – 273.15
+    const temp = (Number(weatherData.main.temp) - 273.15).toFixed(1);
+    const weatherDescription = weatherData.weather[0].description;
+
+    weatherIcon.src = 'http://openweathermap.org/img/w/' + iconCode + '.png';
+    tempIcon.textContent = temp + '°C';
+    descriptionElement.textContent = weatherDescription;
+
+    console.log(weatherData);
 }
