@@ -4,53 +4,23 @@
     <meta charset="UTF-8">
     <title>Weather App</title>
     <script src="./app.js" type="module"></script>
-    <style>
-      /* Define CSS styles for the weather app */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-      }
-      .weather-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        padding: 20px;
-        text-align: center;
-      }
-      h1 {
-        font-size: 32px;
-        margin-top: 0;
-      }
-      .icon {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 10px;
-      }
-      .temperature {
-        font-size: 48px;
-        font-weight: bold;
-        margin: 20px 0;
-      }
-      .description {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      p {
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <div class="weather-container">
       <h1>Current Weather</h1>
-      <p>City name:</p>
+      <p>Enter city name:</p>
       <input type="text">
       <select>
         <option>none</option>
       </select>
       <button>Get Forecast</button>
+      <div class="city-info">
+        <p id="city-name">City:</p>
+        <p id="state-name">State:</p>
+        <p id="humidity">Humidity:</p>
+        <p id="pressure">Pressure:</p>
+      </div>
       <div class="weather-info">
         <img src="https://www.weatherbit.io/static/img/icons/r01d.png" alt="Rain icon" class="icon">
         <span class="temperature">18°C</span>

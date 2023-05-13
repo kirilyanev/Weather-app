@@ -3,6 +3,10 @@ import { getData } from "./api.js";
 const weatherIcon = document.querySelector('.weather-info img');
 const tempIcon = document.querySelector('.temperature');
 const descriptionElement = document.querySelector('.description');
+const cityName = document.querySelector('#city-name');
+const stateName = document.querySelector('#state-name');
+const humidityElement = document.querySelector('#humidity');
+const pressureElement = document.querySelector('#pressure');
 
 const selectElement = document.querySelector('select');
 const nextButton = document.querySelector('button');
@@ -63,6 +67,11 @@ async function renderWeatherData(weatherData) {
     weatherIcon.src = 'http://openweathermap.org/img/w/' + iconCode + '.png';
     tempIcon.textContent = temp + '°C';
     descriptionElement.textContent = weatherDescription;
+    
+    cityName.textContent = 'City: ' + weatherData.name; 
+    stateName.textContent = 'State: ' + weatherData.sys.country;
+    humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
+    pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
 
     console.log(weatherData);
 }
