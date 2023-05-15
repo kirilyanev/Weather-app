@@ -23,7 +23,12 @@ async function renderWeatherData(weatherData) {
     humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
     pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
 
-    console.log(weatherData);
+    // console.log(weatherData);
+}
+
+async function renderForecastData(forecastData) {
+    console.log(forecastData);
 }
 
 export const renderCurrentWeather = renderWeatherData;
+export const renderForecast = renderForecastData;
