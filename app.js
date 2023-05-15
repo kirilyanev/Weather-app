@@ -46,6 +46,4 @@ async function getCountryes() {
 
     renderCurrentWeather(currentWeatherData);
     renderForecast(forecastData);
-
 }
-

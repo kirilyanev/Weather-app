@@ -1,4 +1,4 @@
-
+// TO ADD TRY CATCH IN API CALLS
 
 const host = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 
@@ -15,7 +15,7 @@ async function currentWeather(data) {
 
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4ac8da0dc9053f374e5e587c102978a9`);
     const currentWeather = await response.json();
-
+        
     return currentWeather;
 }
 
