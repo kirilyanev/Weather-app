@@ -3,7 +3,7 @@ body {
   background-color: #f7f7f7;
 }
 .weather-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
@@ -32,9 +32,27 @@ h1 {
 p {
   display: inline-block;
 }
+
+/* TO CHANGE AFTER */
 .city-info {
     border: 2px solid black;
 }
 .city-info p {
     margin-right: 30px;
+}
+.current-day {
+  display: inline-block;
+  border: 2px solid black;
+}
+/* .weather-info {
+  display: inline-block;
+  border: 2px solid black;
+} */
+.weather-forecast {
+  border: 2px solid black;
+}
+.day {
+  display: inline-block;
+  width: calc(20% - 15px);
+  margin: 5px;
 }
