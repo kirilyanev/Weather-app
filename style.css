@@ -40,19 +40,36 @@ p {
 .city-info p {
     margin-right: 30px;
 }
+#city-name {
+  /* border: 2px solid black; */
+  display: inline-block;
+  font-size: 35px;
+  font-weight: 600;
+}
+#today {
+  display: block;
+}
 .current-day {
   display: inline-block;
   border: 2px solid black;
 }
-/* .weather-info {
+.weather-info {
   display: inline-block;
   border: 2px solid black;
-} */
+}
 .weather-forecast {
   border: 2px solid black;
 }
-.day {
-  display: inline-block;
-  width: calc(20% - 15px);
-  margin: 5px;
+
+table {
+  border: 2px solid black;
+  max-width: 600px;
+  margin-left: 50px;
+  margin-right: 50px;
+  /* margin: 15px; */
+  /* padding: 20px; */
+}
+table td {
+  border: 2px solid black;
+  margin: 15px;
 }
