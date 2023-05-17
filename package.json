@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kirilyanev/Weather-app/issues"
   },
-  "homepage": "https://github.com/kirilyanev/Weather-app#readme"
+  "homepage": "https://github.com/kirilyanev/Weather-app#readme",
+  "dependencies": {
+    "lit-html": "^2.7.4"
+  }
 }
