@@ -11,7 +11,7 @@ const pressureElement = document.querySelector('#pressure');
 const dateElement = document.querySelector('#today');
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'];
+const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'];
 let date;
 
 // LIT-HTML
@@ -42,7 +42,7 @@ async function renderWeatherData(weatherData) {
   const temp = (Number(weatherData.main.temp) - 273.15).toFixed(1);
   const weatherDescription = weatherData.weather[0].description;
 
-  const date = dateInfo(weatherData);
+  const formatedDate = dateInfo(weatherData);
 
 
   weatherIcon.src = 'http://openweathermap.org/img/w/' + iconCode + '.png';
@@ -54,7 +54,7 @@ async function renderWeatherData(weatherData) {
   humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
   pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
 
-  dateElement.textContent = `${date[0]}  ${date[1]}`;
+  dateElement.textContent = `${formatedDate[0]}  ${formatedDate[1]}`;
   // console.log(weatherData);
 }
 
@@ -139,7 +139,7 @@ async function renderForecastData(forecastData) {
     `;
 
   render(template(forecastData), tableElement);
-  console.log(forecastData);
+  // console.log(forecastData);
 }
 
 export const renderCurrentWeather = renderWeatherData;
