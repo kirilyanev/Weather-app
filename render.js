@@ -65,7 +65,7 @@ async function renderForecastData(forecastData) {
   const template = (data) => html`
     <p id="month">${month}</p>
     <table>
-    <tr>
+      <tr>
         <th>${day}</th>
         <th>${day + 1}</th>
         <th>${day + 2}</th>
@@ -80,21 +80,49 @@ async function renderForecastData(forecastData) {
         <th>${weekDays[date.getDay() + 4]}</th>
       </tr>
       <tr>
-        <td>hh - temp - img</td>
+        <!-- SAMPLE TEMPLATE FOR HOURLY FORECAST -->
+        <td>
+          <div>
+            ${(data.list[0].dt_txt.split(' ')[1]).slice(0, 2) + ' h'}
+          </div>
+          <div>
+            ${(data.list[0].main.temp - 273.15).toFixed(1) + 'C°'}
+          </div>
+          <img src="${'http://openweathermap.org/img/w/' + data.list[0].weather[0].icon + '.png'}" alt="Rain icon"
+            class="icon">
+        </td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
       </tr>
       <tr>
-        <td>hh - temp - img</td>
+        <td>
+          <div>
+            ${(data.list[1].dt_txt.split(' ')[1]).slice(0, 2) + ' h'}
+          </div>
+          <div>
+            ${(data.list[1].main.temp - 273.15).toFixed(1) + 'C°'}
+          </div>
+          <img src="${'http://openweathermap.org/img/w/' + data.list[1].weather[0].icon + '.png'}" alt="Rain icon"
+            class="icon">
+        </td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
       </tr>
       <tr>
-        <td>hh - temp - img</td>
+        <td>
+          <div>
+            ${(data.list[2].dt_txt.split(' ')[1]).slice(0, 2) + ' h'}
+          </div>
+          <div>
+            ${(data.list[2].main.temp - 273.15).toFixed(1) + 'C°'}
+          </div>
+          <img src="${'http://openweathermap.org/img/w/' + data.list[2].weather[0].icon + '.png'}" alt="Rain icon"
+            class="icon">
+        </td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
         <td>hh - temp - img</td>
