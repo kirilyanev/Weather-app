@@ -70,7 +70,18 @@ table {
   /* margin: 15px; */
   /* padding: 20px; */
 }
+
 table td {
   border: 2px solid black;
   margin: 15px;
+}
+
+/* table */
+#hours-forecast {
+
+}
+
+#temp-forecast {
+  font-weight: 600;
+  font-size: 20px;
 }
