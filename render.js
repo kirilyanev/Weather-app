@@ -62,10 +62,27 @@ async function renderForecastData(forecastData) {
   const month = months[date.getMonth() + 1];
   const day = date.getDate();
 
+  
+  // Necessary for the calculation of the starting grid in forecast table according recived data from the API
+  const forecastStartHour = forecastData.list[0].dt_txt.split(' ')[1].slice(0, 2);
+  const startTdPosition = {
+    '00': 0,
+    '03': -1,
+    '06': -2,
+    '09': -3,
+    '12': -4,
+    '15': -5,
+    '18': -6,
+    '21': -7
+  }
+  let n = startTdPosition[forecastStartHour];
+
+
   const template = (data) => html`
     <p id="month">${month}</p>
-    <table>
+    <table style="width:100%">
       <tr>
+        <th></th>
         <th>${day}</th>
         <th>${day + 1}</th>
         <th>${day + 2}</th>
@@ -73,6 +90,7 @@ async function renderForecastData(forecastData) {
         <th>${day + 4}</th>
       </tr>
       <tr>
+        <th>HOURS</th>
         <th>${weekDays[date.getDay()]}</th>
         <th>${weekDays[date.getDay() + 1]}</th>
         <th>${weekDays[date.getDay() + 2]}</th>
@@ -81,68 +99,108 @@ async function renderForecastData(forecastData) {
       </tr>
       <tr>
         <!-- SAMPLE TEMPLATE FOR HOURLY FORECAST -->
-        ${trTemplate(data, 0)}
-        ${trTemplate(data, 8)}
-        ${trTemplate(data, 16)}
-        ${trTemplate(data, 24)}
-        ${trTemplate(data, 32)}
+        <th>
+          <div id="hours-forecast">
+            <!-- ${hourTemplate(data, 0)} -->
+            00 h
+          </div>
+        </th>
+        ${trTemplate(data, n)}
+        ${trTemplate(data, n + 8)}
+        ${trTemplate(data, n + 16)}
+        ${trTemplate(data, n + 24)}
+        ${trTemplate(data, n + 32)}
       </tr>
       <tr>
-        ${trTemplate(data, 1)}
-        ${trTemplate(data, 9)}
-        ${trTemplate(data, 17)}
-        ${trTemplate(data, 25)}
-        ${trTemplate(data, 33)}
+        <th>
+          <div id="hours-forecast">
+            03 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 1)}
+        ${trTemplate(data, n + 9)}
+        ${trTemplate(data, n + 17)}
+        ${trTemplate(data, n + 25)}
+        ${trTemplate(data, n + 33)}
       </tr>
       <tr>
-        ${trTemplate(data, 2)}
-        ${trTemplate(data, 10)}
-        ${trTemplate(data, 18)}
-        ${trTemplate(data, 26)}
-        ${trTemplate(data, 34)}
+        <th>
+          <div id="hours-forecast">
+            06 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 2)}
+        ${trTemplate(data, n + 10)}
+        ${trTemplate(data, n + 18)}
+        ${trTemplate(data, n + 26)}
+        ${trTemplate(data, n + 34)}
       </tr>
       <tr>
-        ${trTemplate(data, 3)}
-        ${trTemplate(data, 11)}
-        ${trTemplate(data, 19)}
-        ${trTemplate(data, 27)}
-        ${trTemplate(data, 35)}
+        <th>
+          <div id="hours-forecast">
+            09 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 3)}
+        ${trTemplate(data, n + 11)}
+        ${trTemplate(data, n + 19)}
+        ${trTemplate(data, n + 27)}
+        ${trTemplate(data, n + 35)}
       </tr>
       <tr>
-        ${trTemplate(data, 4)}
-        ${trTemplate(data, 12)}
-        ${trTemplate(data, 20)}
-        ${trTemplate(data, 28)}
-        ${trTemplate(data, 36)}
+        <th>
+          <div id="hours-forecast">
+            12 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 4)}
+        ${trTemplate(data, n + 12)}
+        ${trTemplate(data, n + 20)}
+        ${trTemplate(data, n + 28)}
+        ${trTemplate(data, n + 36)}
       </tr>
       <tr>
-        ${trTemplate(data, 5)}
-        ${trTemplate(data, 13)}
-        ${trTemplate(data, 21)}
-        ${trTemplate(data, 29)}
-        ${trTemplate(data, 37)}
+        <th>
+          <div id="hours-forecast">
+            15 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 5)}
+        ${trTemplate(data, n + 13)}
+        ${trTemplate(data, n + 21)}
+        ${trTemplate(data, n + 29)}
+        ${trTemplate(data, n + 37)}
       </tr>
       <tr>
-        ${trTemplate(data, 6)}
-        ${trTemplate(data, 14)}
-        ${trTemplate(data, 22)}
-        ${trTemplate(data, 30)}
-        ${trTemplate(data, 38)}
+        <th>
+          <div id="hours-forecast">
+            18 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 6)}
+        ${trTemplate(data, n + 14)}
+        ${trTemplate(data, n + 22)}
+        ${trTemplate(data, n + 30)}
+        ${trTemplate(data, n + 38)}
       </tr>
       <tr>
-        ${trTemplate(data, 7)}
-        ${trTemplate(data, 15)}
-        ${trTemplate(data, 23)}
-        ${trTemplate(data, 31)}
-        ${trTemplate(data, 39)}
+        <th>
+          <div id="hours-forecast">
+            21 h
+          </div>
+        </th>
+        ${trTemplate(data, n + 7)}
+        ${trTemplate(data, n + 15)}
+        ${trTemplate(data, n + 23)}
+        ${trTemplate(data, n + 31)}
+        ${trTemplate(data, n + 39)}
       </tr>
     </table>
     `;
 
   render(template(forecastData), tableElement);
-  // console.log(forecastData);
+  console.log(forecastData);
 }
-
 
 // SAMPLE TEMPLATE
 {/* <td>
@@ -168,16 +226,13 @@ const imgTemplate = (data, n) => {
   return `${'http://openweathermap.org/img/w/' + data.list[n].weather[0].icon + '.png'}`
 }
 
-const trTemplate = (data, n) => html`
-<td>
-  <div id="hours-forecast">
-    ${hourTemplate(data, n)}
-  </div>
-  <div id="temp-forecast">
-    ${tempTemplate(data, n)}
-  </div>
-  <img src="${imgTemplate(data, n)}" alt="Rain icon" class="icon">
-</td>`
+const trTemplate = (data, n) => n >= 0 ? html`
+  <td>
+    <div id="temp-forecast">
+      ${tempTemplate(data, n,)}
+    </div>
+    <img src="${imgTemplate(data, n)}" alt="Rain icon" class="icon">
+  </td>` : 'N/A';
 
 
 

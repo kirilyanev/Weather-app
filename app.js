@@ -5,7 +5,6 @@ import { renderCurrentWeather } from "./render.js";
 import { renderForecast } from "./render.js";
 
 
-
 const selectElement = document.querySelector('select');
 const nextButton = document.querySelector('button');
 nextButton.addEventListener('click', getCountryes);
