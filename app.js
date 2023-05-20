@@ -4,16 +4,14 @@ import { getHourlyForecast } from "./api.js";
 import { renderCurrentWeather } from "./render.js";
 import { renderForecast } from "./render.js";
 
-
 const selectElement = document.querySelector('select');
 const nextButton = document.querySelector('button');
-nextButton.addEventListener('click', getCountryes);
+nextButton.addEventListener('click', initialRender);
 
-// TO ADD EVENTLISTENER ONCHANGE TO selectElement;git
 
-async function getCountryes() {
+async function addOptions() {
     let countryesData = {};
-    
+
     const input = document.querySelector('input');
     const cityName = input.value;
 
@@ -37,8 +35,35 @@ async function getCountryes() {
             const option = document.createElement('option');
             option.textContent = cityData.country;
             selectElement.appendChild(option);
+
+            selectElement.addEventListener('change', async function handleChange(event) {
+                const country = event.target.value // 👉️ get selected VALUE
+
+                const currentWeatherData = await getCurrentWeather(countryesData[country]);
+                const forecastData = await getHourlyForecast(countryesData[country]);
+
+                renderCurrentWeather(currentWeatherData);
+                renderForecast(forecastData);
+            });
         }
     });
+
+    return citiesData;
+
+    // console.log(countryesData);
+    // console.log(citiesData);
+
+    // const currentWeatherData = await getCurrentWeather(citiesData[0]);
+    // const forecastData = await getHourlyForecast(citiesData[0]);
+
+    // renderCurrentWeather(currentWeatherData);
+    // renderForecast(forecastData);
+}
+
+
+async function initialRender() {
+
+    const citiesData = await addOptions();
 
     const currentWeatherData = await getCurrentWeather(citiesData[0]);
     const forecastData = await getHourlyForecast(citiesData[0]);
