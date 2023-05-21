@@ -5,6 +5,7 @@ const weatherIcon = document.querySelector('.weather-info img');
 const tempIcon = document.querySelector('.temperature');
 const descriptionElement = document.querySelector('.description');
 const cityName = document.querySelector('#city-name');
+// const stateName = document.querySelector('#state-name');
 const stateName = document.querySelector('#state-name');
 const humidityElement = document.querySelector('#humidity');
 const pressureElement = document.querySelector('#pressure');
@@ -50,7 +51,8 @@ async function renderWeatherData(weatherData) {
   descriptionElement.textContent = weatherDescription;
 
   cityName.textContent = weatherData.name;
-  stateName.textContent = 'State: ' + weatherData.sys.country;
+  // stateName.textContent = 'State: ' + weatherData.sys.country;
+  stateName.textContent += ` ${weatherData.sys.country}`;
   humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
   pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
 
@@ -63,7 +65,7 @@ async function renderForecastData(forecastData) {
   const day = date.getDate();
 
   
-  // Necessary for the calculation of the starting grid in forecast table according recived data from the API
+  // Necessary for the calculation of the starting grid in forecast table according to the received data from the API
   const forecastStartHour = forecastData.list[0].dt_txt.split(' ')[1].slice(0, 2);
   const startTdPosition = {
     '00': 0,
@@ -199,7 +201,6 @@ async function renderForecastData(forecastData) {
     `;
 
   render(template(forecastData), tableElement);
-  console.log(forecastData);
 }
 
 // SAMPLE TEMPLATE

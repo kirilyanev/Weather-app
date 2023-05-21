@@ -2,44 +2,53 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
 }
+
 .weather-container {
   max-width: 700px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   text-align: center;
 }
+
 h1 {
   font-size: 32px;
   margin-top: 0;
 }
+
 .icon {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
 }
+
 .temperature {
   font-size: 48px;
   font-weight: bold;
   margin: 20px 0;
 }
+
 .description {
   font-size: 24px;
   margin-bottom: 20px;
 }
+
 p {
   display: inline-block;
 }
 
 /* TO CHANGE AFTER */
 .city-info {
-    border: 2px solid black;
+  border: 2px solid black;
+  border-radius: 5px;
 }
+
 .city-info p {
-    margin-right: 30px;
+  margin-right: 30px;
 }
+
 #city-name {
   /* border: 2px solid black; */
   display: inline-block;
@@ -47,23 +56,24 @@ p {
   font-weight: 600;
   margin-right: 20px;
 }
+
 #today {
   display: block;
 }
+
 .current-day {
   display: inline-block;
   border: 2px solid black;
+  border-radius: 10px;
 }
+
 .weather-info {
   display: inline-block;
-  border: 2px solid black;
-}
-.weather-forecast {
-  border: 2px solid black;
 }
 
 table {
   border: 2px solid black;
+  border-radius: 10px;
   max-width: 600px;
   margin-left: 50px;
   margin-right: 50px;
@@ -77,9 +87,7 @@ table td {
 }
 
 /* table */
-#hours-forecast {
-
-}
+#hours-forecast {}
 
 #temp-forecast {
   font-weight: 600;
