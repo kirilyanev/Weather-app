@@ -9,6 +9,7 @@ const cityName = document.querySelector('#city-name');
 const stateName = document.querySelector('#state-name');
 const humidityElement = document.querySelector('#humidity');
 const pressureElement = document.querySelector('#pressure');
+const windElement = document.querySelector('#wind');
 const dateElement = document.querySelector('#today');
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -50,11 +51,12 @@ async function renderWeatherData(weatherData) {
   tempIcon.textContent = temp + '°C';
   descriptionElement.textContent = weatherDescription;
 
-  cityName.textContent = weatherData.name;
+  cityName.textContent = `${weatherData.name},`;
   // stateName.textContent = 'State: ' + weatherData.sys.country;
-  stateName.textContent += ` ${weatherData.sys.country}`;
+  stateName.textContent = `${weatherData.sys.country}`;
   humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
   pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
+  windElement.textContent = `Wind speed and course: ${weatherData.wind.speed} kn | ${weatherData.wind.deg}°`;
 
   dateElement.textContent = `${formatedDate[0]}  ${formatedDate[1]}`;
   // console.log(weatherData);
