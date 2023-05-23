@@ -12,6 +12,10 @@ const pressureElement = document.querySelector('#pressure');
 const windElement = document.querySelector('#wind');
 const dateElement = document.querySelector('#today');
 
+const additionalInfoElement = document.querySelector('.additional-info');
+const currentDayElement = document.querySelector('.current-day');
+
+
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'];
 let date;
@@ -39,13 +43,14 @@ function dateInfo(weatherData) {
 }
 
 async function renderWeatherData(weatherData) {
+  additionalInfoElement.style.display = 'block';
+  currentDayElement.style.display = 'inline-block';
+
   const iconCode = weatherData.weather[0].icon;
   // Celsius = Kelvin – 273.15
   const temp = (Number(weatherData.main.temp) - 273.15).toFixed(1);
   const weatherDescription = weatherData.weather[0].description;
-
   const formatedDate = dateInfo(weatherData);
-
 
   weatherIcon.src = 'http://openweathermap.org/img/w/' + iconCode + '.png';
   tempIcon.textContent = temp + '°C';
@@ -84,7 +89,7 @@ async function renderForecastData(forecastData) {
 
   const template = (data) => html`
     <p id="month">${month}</p>
-    <table style="width:100%">
+    <table>
       <tr>
         <th></th>
         <th>${day}</th>
@@ -235,7 +240,7 @@ const trTemplate = (data, n) => n >= 0 ? html`
       ${tempTemplate(data, n,)}
     </div>
     <img src="${imgTemplate(data, n)}" alt="Rain icon" class="icon">
-  </td>` : 'N/A';
+  </td>` : html`<div id="no-data">N/A</div>`;
 
 
 
