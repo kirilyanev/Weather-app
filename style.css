@@ -6,7 +6,7 @@ body {
 .weather-container {
   max-width: 700px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: rgba(255,255,255,255);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -40,12 +40,14 @@ p {
 }
 
 /* TO CHANGE AFTER */
-.city-info {
+.additional-info {
   border: 2px solid black;
   border-radius: 5px;
+  background-color: #f2f2f2;
+  margin-bottom: 15px;
 }
 
-.city-info p {
+.additional-info p {
   margin-right: 30px;
 }
 
@@ -69,9 +71,11 @@ p {
 }
 
 .current-day {
+  background-color: #f2f2f2;
   display: inline-block;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
+  padding: 15px;
 }
 
 .weather-info {
@@ -79,6 +83,8 @@ p {
 }
 
 table {
+  background-color: #f2f2f2;
+  width:100%;
   border: 2px solid black;
   border-radius: 10px;
   max-width: 600px;
@@ -91,10 +97,18 @@ table {
 table td {
   border: 2px solid black;
   margin: 15px;
+  padding: 10px;
 }
 
 /* table */
 #hours-forecast {}
+
+#no-data {
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 36px;
+
+}
 
 #temp-forecast {
   font-weight: 600;
