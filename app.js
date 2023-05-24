@@ -49,15 +49,6 @@ async function addOptions() {
     });
 
     return citiesData;
-
-    // console.log(countryesData);
-    // console.log(citiesData);
-
-    // const currentWeatherData = await getCurrentWeather(citiesData[0]);
-    // const forecastData = await getHourlyForecast(citiesData[0]);
-
-    // renderCurrentWeather(currentWeatherData);
-    // renderForecast(forecastData);
 }
 
 

@@ -5,7 +5,6 @@ const weatherIcon = document.querySelector('.weather-info img');
 const tempIcon = document.querySelector('.temperature');
 const descriptionElement = document.querySelector('.description');
 const cityName = document.querySelector('#city-name');
-// const stateName = document.querySelector('#state-name');
 const stateName = document.querySelector('#state-name');
 const humidityElement = document.querySelector('#humidity');
 const pressureElement = document.querySelector('#pressure');
@@ -57,14 +56,12 @@ async function renderWeatherData(weatherData) {
   descriptionElement.textContent = weatherDescription;
 
   cityName.textContent = `${weatherData.name},`;
-  // stateName.textContent = 'State: ' + weatherData.sys.country;
   stateName.textContent = `${weatherData.sys.country}`;
   humidityElement.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
   pressureElement.textContent = 'Pressure: ' + weatherData.main.pressure + ' mb';
   windElement.textContent = `Wind speed and course: ${weatherData.wind.speed} kn | ${weatherData.wind.deg}°`;
 
   dateElement.textContent = `${formatedDate[0]}  ${formatedDate[1]}`;
-  // console.log(weatherData);
 }
 
 async function renderForecastData(forecastData) {
@@ -74,6 +71,7 @@ async function renderForecastData(forecastData) {
   
   // Necessary for the calculation of the starting grid in forecast table according to the received data from the API
   const forecastStartHour = forecastData.list[0].dt_txt.split(' ')[1].slice(0, 2);
+  // Hours and a number, used to skip first forecast hours data received by the server, if necessary
   const startTdPosition = {
     '00': 0,
     '03': -1,
@@ -210,18 +208,6 @@ async function renderForecastData(forecastData) {
   render(template(forecastData), tableElement);
 }
 
-// SAMPLE TEMPLATE
-{/* <td>
-<div>
-  ${(data.list[0].dt_txt.split(' ')[1]).slice(0, 2) + ' h'}
-</div>
-<div>
-  ${(data.list[0].main.temp - 273.15).toFixed(1) + 'C°'}
-</div>
-<img src="${'http://openweathermap.org/img/w/' + data.list[0].weather[0].icon + '.png'}" alt="Rain icon"
-  class="icon">
-</td> */}
-
 const hourTemplate = (data, n) => {
   return `${(data.list[n].dt_txt.split(' ')[1]).slice(0, 2) + ' h'}`;
 }
@@ -241,7 +227,6 @@ const trTemplate = (data, n) => n >= 0 ? html`
     </div>
     <img src="${imgTemplate(data, n)}" alt="Rain icon" class="icon">
   </td>` : html`<div id="no-data">N/A</div>`;
-
 
 
 export const renderCurrentWeather = renderWeatherData;
