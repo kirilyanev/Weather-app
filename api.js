@@ -1,4 +1,5 @@
-// TO ADD TRY CATCH IN API CALLS
+// TO ADD TRY CATCH IN API CALLS - DONE
+// TO TEST TRY CATCH IN API CALLS
 
 const host = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 
@@ -29,8 +30,8 @@ async function currentWeather(data) {
         return currentWeather;
     } catch (error) {
         alert (error);
-        location.reload();
-        throw error;
+        // location.reload();
+        // throw error;
     }
 }
 
