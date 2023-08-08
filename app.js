@@ -1,8 +1,8 @@
-import { getData } from "./api.js";
-import { getCurrentWeather } from "./api.js";
-import { getHourlyForecast } from "./api.js";
-import { renderCurrentWeather } from "./render.js";
-import { renderForecast } from "./render.js";
+import { getData } from "api.js";
+import { getCurrentWeather } from "api.js";
+import { getHourlyForecast } from "api.js";
+import { renderCurrentWeather } from "render.js";
+import { renderForecast } from "render.js";
 
 const selectElement = document.querySelector('select');
 const getForecastButton = document.querySelector('button');
