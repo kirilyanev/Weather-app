@@ -5,13 +5,23 @@ import { renderCurrentWeather } from "./render.js";
 import { renderForecast } from "./render.js";
 
 const selectElement = document.querySelector('select');
-const nextButton = document.querySelector('button');
-nextButton.addEventListener('click', initialRender);
+const getForecastButton = document.querySelector('button');
+let countryesData = {};
 
+getForecastButton.addEventListener('click', initialRender);
+selectElement.addEventListener('change', handleChange);
+
+async function handleChange(event) {
+    const country = event.target.value // 👉️ get selected VALUE
+
+    const currentWeatherData = await getCurrentWeather(countryesData[country]);
+    const forecastData = await getHourlyForecast(countryesData[country]);
+
+    renderCurrentWeather(currentWeatherData);
+    renderForecast(forecastData);
+}
 
 async function addOptions() {
-    let countryesData = {};
-
     const input = document.querySelector('input');
     const cityName = input.value;
 
@@ -26,7 +36,6 @@ async function addOptions() {
 
     citiesData.forEach(cityData => {
         if (!countryesData.hasOwnProperty(cityData.country)) {
-
             countryesData[cityData.country] = {
                 name: cityData.name,
                 lat: cityData.lat,
@@ -35,24 +44,13 @@ async function addOptions() {
             const option = document.createElement('option');
             option.textContent = cityData.country;
             selectElement.appendChild(option);
-
-            selectElement.addEventListener('change', async function handleChange(event) {
-                const country = event.target.value // 👉️ get selected VALUE
-
-                const currentWeatherData = await getCurrentWeather(countryesData[country]);
-                const forecastData = await getHourlyForecast(countryesData[country]);
-
-                renderCurrentWeather(currentWeatherData);
-                renderForecast(forecastData);
-            });
         }
     });
-
     return citiesData;
 }
 
-
 async function initialRender() {
+    countryesData = {};
 
     const citiesData = await addOptions();
 
