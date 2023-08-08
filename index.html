@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <base href="/">
-    <title>Weather App</title>
-    <script src="./app.js" type="module"></script>
+
+<!-- <head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <title>Weather App</title>
+  <script src="./app.js" type="module"></script>
     <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div class="weather-container">
-      <h1>Current Weather</h1>
-      <p>Enter city name:</p>
-      <input type="text">
-      <p>State:</p>
-      <select>
-        <option>none</option>
-      </select>
-      <button>Get Forecast</button>
-      <div class="additional-info" style="display: none;">
-        <p id="humidity"></p>
-        <p id="pressure"></p>
-        <p id="wind"></p>
-      </div>
-      <div class="current-day" style="display: none;">
-        <!-- <p>TODAY</p> -->
-        <p id="today"></p>
-        <div id="city-name"></div>
-        <div id="state-name"></div>
-        <div class="weather-info">
-          <img>
-          <span class="temperature"></span>
-          <div class="description"></div>
-        </div>
-      </div>
-      <div class="weather-forecast">
-            <!-- DYNAMICALY GENERATED CONTENT -->
-        </div>
+</head> -->
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <title>Weather App</title>
+  <script src="app.js" type="module"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="weather-container">
+    <h1>Current Weather</h1>
+    <p>Enter city name:</p>
+    <input type="text">
+    <p>State:</p>
+    <select>
+      <option>none</option>
+    </select>
+    <button>Get Forecast</button>
+    <div class="additional-info" style="display: none;">
+      <p id="humidity"></p>
+      <p id="pressure"></p>
+      <p id="wind"></p>
+    </div>
+    <div class="current-day" style="display: none;">
+      <!-- <p>TODAY</p> -->
+      <p id="today"></p>
+      <div id="city-name"></div>
+      <div id="state-name"></div>
+      <div class="weather-info">
+        <img>
+        <span class="temperature"></span>
+        <div class="description"></div>
       </div>
     </div>
-  </body>
+    <div class="weather-forecast">
+      <!-- DYNAMICALY GENERATED CONTENT -->
+    </div>
+  </div>
+  </div>
+</body>
+
 </html>
