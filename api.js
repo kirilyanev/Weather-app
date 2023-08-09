@@ -12,7 +12,6 @@ async function request(url) {
     } catch (error) {
         alert(error);
     }
-
 }
 
 async function currentWeather(data) {
