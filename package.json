@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kirilyanev/Weather-app#readme",
   "dependencies": {
-    "lit-html": "^2.7.4"
+    "lit-html": "^2.8.0"
   }
 }
