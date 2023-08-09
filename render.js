@@ -52,7 +52,7 @@ async function renderWeatherData(weatherData) {
   const weatherDescription = weatherData.weather[0].description;
   const formatedDate = dateInfo(weatherData);
 
-  weatherIcon.src = 'http://openweathermap.org/img/w/' + iconCode + '.png';
+  weatherIcon.src = 'https://openweathermap.org/img/w/' + iconCode + '.png';
   tempIcon.textContent = temp + '°C';
   descriptionElement.textContent = weatherDescription;
 
@@ -218,7 +218,7 @@ const tempTemplate = (data, n) => {
 }
 
 const imgTemplate = (data, n) => {
-  return `${'http://openweathermap.org/img/w/' + data.list[n].weather[0].icon + '.png'}`
+  return `${'https://openweathermap.org/img/w/' + data.list[n].weather[0].icon + '.png'}`
 }
 
 const trTemplate = (data, n) => n >= 0 ? html`

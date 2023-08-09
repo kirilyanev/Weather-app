@@ -1,7 +1,7 @@
 // TO ADD TRY CATCH IN API CALLS - DONE
 // TO TEST TRY CATCH IN API CALLS
 
-const host = 'http://api.openweathermap.org/geo/1.0/direct?q=';
+const host = 'https://api.openweathermap.org/geo/1.0/direct?q=';
 
 async function request(url) {
     try {
