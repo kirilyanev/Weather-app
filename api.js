@@ -19,7 +19,7 @@ async function currentWeather(data) {
         if (data === undefined) {
             throw new Error('Enter a valid city');
         }
-    
+
         const lat = data.lat;
         const lon = data.lon;
 
@@ -28,7 +28,7 @@ async function currentWeather(data) {
 
         return currentWeather;
     } catch (error) {
-        alert (error);
+        alert(error);
         // location.reload();
         // throw error;
     }
@@ -38,10 +38,10 @@ async function hourlyForecast(data) {
     try {
         const lat = data.lat;
         const lon = data.lon;
-    
+
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4ac8da0dc9053f374e5e587c102978a9`);
         const hourlyForecast = await response.json();
-    
+
         return hourlyForecast;
     } catch (error) {
         alert(error);

@@ -1,6 +1,6 @@
 // import { html, render } from 'https://unpkg.com/lit-html?module';
-import { html, render } from "./node_modules/lit-html/lit-html.js";
-
+// import { html, render } from "./node_modules/lit-html/lit-html.js";
+import { html, render } from 'lit-html';
 
 const weatherIcon = document.querySelector('.weather-info img');
 const tempIcon = document.querySelector('.temperature');
