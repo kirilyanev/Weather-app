@@ -1,5 +1,5 @@
-// import { html, render } from "./node_modules/lit-html/lit-html.js";
-import { html, render } from 'https://unpkg.com/lit-html?module';
+// import { html, render } from 'https://unpkg.com/lit-html?module';
+import { html, render } from "./node_modules/lit-html/lit-html.js";
 
 
 const weatherIcon = document.querySelector('.weather-info img');
@@ -69,7 +69,7 @@ async function renderForecastData(forecastData) {
   const month = months[date.getMonth() + 1];
   const day = date.getDate();
 
-  
+
   // Necessary for the calculation of the starting grid in forecast table according to the received data from the API
   const forecastStartHour = forecastData.list[0].dt_txt.split(' ')[1].slice(0, 2);
   // Hours and a number, used to skip first forecast hours data received by the server, if necessary

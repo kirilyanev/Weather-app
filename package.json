@@ -18,5 +18,8 @@
   "homepage": "https://github.com/kirilyanev/Weather-app#readme",
   "dependencies": {
     "lit-html": "^2.8.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.20.7"
   }
 }
