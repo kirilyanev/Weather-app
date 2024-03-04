@@ -19,7 +19,7 @@ const currentDayElement = document.querySelector('.current-day');
 
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'];
+const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 let date;
 
 // LIT-HTML
@@ -33,11 +33,11 @@ function dateInfo(weatherData) {
   const year = date.getFullYear();
   const dayOfWeek = weekDays[date.getDay()];
   const hours = date.getHours();
-  const minutes = "0" + date.getMinutes();
-  const seconds = "0" + date.getSeconds();
+  const minutes = date.getMinutes().toString();
+  const seconds = date.getSeconds().toString();
 
   // Will display time in 10:30:23 format
-  const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  const formattedTime = `${hours}:${minutes.substring(-2)}:${seconds.substring(-2)}`;
   const formattedDate = `${dayOfWeek} ${day} - ${months[month]} - ${year}`;
   const result = [formattedTime, formattedDate];
 
@@ -70,7 +70,7 @@ async function renderWeatherData(weatherData) {
 async function renderForecastData(forecastData) {
   const month = months[date.getMonth() + 1];
   const day = date.getDate();
-
+  const weekDay = date.getDay();
 
   // Necessary for the calculation of the starting grid in forecast table according to the received data from the API
   const forecastStartHour = forecastData.list[0].dt_txt.split(' ')[1].slice(0, 2);
@@ -101,11 +101,11 @@ async function renderForecastData(forecastData) {
       </tr>
       <tr>
         <th>HOURS</th>
-        <th>${weekDays[date.getDay()]}</th>
-        <th>${weekDays[date.getDay() + 1]}</th>
-        <th>${weekDays[date.getDay() + 2]}</th>
-        <th>${weekDays[date.getDay() + 3]}</th>
-        <th>${weekDays[date.getDay() + 4]}</th>
+        <th>${weekDays[weekDay]}</th>
+        <th>${weekDays[(weekDay + 1) % weekDays.length]}</th>
+        <th>${weekDays[(weekDay + 2) % weekDays.length]}</th>
+        <th>${weekDays[(weekDay + 3) % weekDays.length]}</th>
+        <th>${weekDays[(weekDay + 4) % weekDays.length]}</th>
       </tr>
       <tr>
         <!-- SAMPLE TEMPLATE FOR HOURLY FORECAST -->
@@ -216,7 +216,7 @@ const hourTemplate = (data, n) => {
 }
 
 const tempTemplate = (data, n) => {
-  return `${(data.list[n].main.temp - 273.15).toFixed(1) + 'C°'}`;
+  return `${(data.list[n].main.temp - 273.15).toFixed(1) + ' C°'}`;
 }
 
 const imgTemplate = (data, n) => {
